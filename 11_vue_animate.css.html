@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BC</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+ <style>
+  	
+  </style>
+</head>
+<body>
+	<div id='app'>
+		<!-- 可以命名 -->
+		<transition
+				<!-- appear 自定义的 让在初始时也有动画-->
+				appear
+				enter-active-class="animated swing"
+			    leave-active-class="animated shake"
+				appear-active-class="animated swing">  
+    		<div v-if="show">{{txt}}</div>
+    	</transition>
+        <button @click='d'>switch</button>
+
+    </div>
+	
+	<script>
+		var app = new Vue({
+              el: '#app',
+              data: {
+                   txt: "Hello World222",
+                   show: true
+              },
+              methods: {
+              	d: function() {
+              	      this.show = !this.show
+    				}
+              }
+        })
+	</script>
+</html>

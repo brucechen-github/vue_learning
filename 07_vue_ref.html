@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BC</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id='app'>
+		{{txt}}
+         <counter ref="one" @change='cc'></counter>
+         <counter ref='two' @change='cc'></counter>
+         <p>total num is: {{total}}</p>
+     </div>
+	
+	<script>
+		
+		Vue.component('counter', {
+			  template: "<div @click='add'>{{num}}</div>",
+			  data: function() {
+				      return {
+                          num: 0
+                      }
+              },
+              methods: {
+              	add: function() {
+              	     this.num++
+                       this.$emit('change')
+                  }
+             }
+         })
+		
+		var app = new Vue({
+              el: '#app',
+              data: {
+                   txt: "Hello World222",
+                   total: 0
+              },
+              methods: {
+              	 cc: function() {
+              	   // alert(this.$refs.one.num)
+                    this.total = this.$refs.one.num + this.$refs.two.num
+                 }
+              }
+        })
+	</script>
+</html>

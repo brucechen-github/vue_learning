@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BC</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id='app'>
+        <input type='text' v-model="inputValue"></input>
+        <button @click="ttt">submit</button>
+        <ul>
+        	<!--<li v-for="item in list">{{item}}</li>-->
+            <todo-item v-bind:c="item"
+                                v-for="item in list">
+            </todo-item>
+        </ul>
+        <p>{{inputValue}}</p>
+    </div>
+	
+	<script>
+		//全局Component
+		Vue.component("TodoItem",  {
+			props: ['c'],
+			template:  "<li>{{c}}</li>"
+       })
+       
+		var app = new Vue({
+              el: '#app',
+              data: {
+                   txt: "Hello World222",
+                   inputValue: '',
+                   list: ['a', 'b']
+              },
+              methods: {
+              	ttt: function() {
+              	     this.list.push(this.inputValue)
+                       this.inputValue = ''
+              	    // alert('haha')
+                  }
+              }
+        })
+	</script>
+</html>

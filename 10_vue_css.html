@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BC</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+ <style>
+  	.v-enter,
+      .v-leave-to {
+  	    opacity: 0;
+       }
+       .v-enter-active,
+       .v-leave-active {
+       	transition: opacity 3s;
+       }
+  </style>
+</head>
+<body>
+	<div id='app'>
+		<!-- 可以命名 -->
+		<transition>  
+    		<div v-if="show">{{txt}}</div>
+    	</transition>
+        <button @click='d'>switch</button>
+
+    </div>
+	
+	<script>
+		var app = new Vue({
+              el: '#app',
+              data: {
+                   txt: "Hello World222",
+                   show: true
+              },
+              methods: {
+              	d: function() {
+              	      this.show = !this.show
+    				}
+              }
+        })
+	</script>
+</html>

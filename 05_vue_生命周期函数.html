@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BC</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id='app'>
+        <input type='text' v-model="inputValue"></input>
+        <button @click="ttt">submit</button>
+        <ul>
+        	<li v-for="item in list">{{item}}</li>
+        </ul>
+        <p>{{inputValue}}</p>
+        <div v-text="name + ' hdjdjd'"></div>
+        <div v-html="name2"></div>
+        <div>{{full_name}}</div>
+         <div>{{fullname}}</div>
+         <div>{{fullname2}}</div>
+    </div>
+	
+	<script>
+		var app = new Vue({
+              el: '#app',
+              data: {
+                   txt: "Hello World222",
+                   name: 'ASDFG',
+                   name2: '<h1>aaa</h1>',
+                   inputValue: '',
+                   fullname: '',
+                   list: ['a', 'b']
+              },
+              computed: {
+              	full_name: function() {
+              	    return this.name + this.name2
+               },
+               fullname2: {
+               	 get: function() {
+               	     return this.name + 'dff'
+                     }
+                 }
+               },
+               watch: {
+               	inputValue: function() {
+               	     this.fullname = this.inputValue + '   sdd'
+                }
+               },
+     
+              beforeCreate: ()=> {
+              	  //  alert('1')
+              },
+              created: ()=> {
+              	//alert('2')
+              },
+              beforeMount: ()=> {
+              	//alert('3')
+              },
+              mounted: ()=> {
+              //	alert('4')
+              },
+              beforeUpdate: ()=> {
+              },
+              updated: ()=> {
+              },
+              beforeDestory: ()=> {
+              },
+              methods: {
+              	ttt: function() {
+              	     this.list.push(this.inputValue)
+                       this.inputValue = ''
+              	    // alert('haha')
+                  }
+              }
+        })
+	</script>
+</html>

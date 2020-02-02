@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BC</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+  	.a {
+  	     color: red;
+       }
+    </style>
+</head>
+<body>
+	<div id='app'>
+         <div  :class="{a: isRed}"
+                   @click="c">
+             xxxx
+          </div>
+    </div>
+	
+	<script>
+		var app = new Vue({
+              el: '#app',
+              data: {
+                   txt: "Hello World222",
+                   isRed: true
+              },
+              methods: {
+              	c: function() {
+              	this.isRed = !this.isRed
+               }
+             }
+        })
+	</script>
+</html>

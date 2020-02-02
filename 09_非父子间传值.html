@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BC2</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id='app'>
+        <child c="hello world" @click='change'></child>
+        <child c="Bruce"  @click='change'></child>
+    </div>
+	
+	<script>
+      Vue.prototype.bus = new Vue()
+      
+       Vue.component('child', {
+            props: ['c'],
+            data: function() {
+            	return {cc: this.c}
+            },
+			template:  "<div @click='ddd'>{{cc}}</div>",
+			methods: {
+				ddd: function() {
+					 this.bus.$emit('change', this.cc)
+				}
+            },
+            mounted: function() {
+            	 var that = this
+                  this.bus.$on('change', function(msg) {
+ 				     that.cc = msg
+					})
+			}
+       })
+		var app = new Vue({
+              el: '#app',
+              data: {
+                   txt: "Hello World222"
+             },
+             methods: {
+             	ccc: function() {
+             	    alert('click')
+                }
+             }
+             
+         })
+         
+      </script>
+   </body>      
+</html>
+                   
+                   
